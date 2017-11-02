@@ -1,0 +1,3 @@
+On evExecuteContextMenu
+	Do iImageList.$sendall($ref.iImageChecked.$assign(kTrue))
+	Do method enableButtons

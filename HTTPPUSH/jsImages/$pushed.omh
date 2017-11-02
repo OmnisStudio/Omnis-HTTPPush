@@ -1,0 +1,28 @@
+If pRow.C1=1     ;; image list
+	Do iImageList.$define(iImageName,iImageBinary,iImageChecked)
+	Do iImageList.$merge(pRow.C2)
+Else If pRow.C1=2     ;; single image
+	Calculate iImageList.[iImageList.$line].iImageBinary as pRow.C2
+Else     ;; multiple images
+	Calculate lImages as pRow.C2
+	For lImages.$line from 1 to lImages.$linecount step 1
+		Calculate lString as lImages.C1
+		Do iImageList.$search(iImageList.C1=lString,kTrue,kFalse,kFalse,kFalse) Returns lLine
+		Calculate iImageList.[iImageList.$line].iImageBinary as lImages.C2
+		Calculate iImageList.[iImageList.$line].iImageChecked as kFalse
+	End For
+End If
+
+Calculate lHeaderRow as pRow.C3
+Do iResponseHeaders.$define(iResponseHeader,iResponseHeaderValue)
+For lCol from 1 to lHeaderRow.$colcount step 1
+	Do iResponseHeaders.$add(lHeaderRow.$cols.[lCol].$name,lHeaderRow.[lCol])
+End If
+
+Calculate lDetailsRow as pRow.C4
+Do iRepsonseDetails.$define(iResponseDetail,iResponseDetailValue)
+For lCol from 1 to lDetailsRow.$colcount step 1
+	Do iRepsonseDetails.$add(lDetailsRow.$cols.[lCol].$name,lDetailsRow.[lCol])
+End If
+
+Do method enableButtons

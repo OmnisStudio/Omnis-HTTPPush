@@ -1,0 +1,2 @@
+On evClick
+	Do $cinst.$showurl('http://www.omnis.net/technotes/tnws0005.jsp')

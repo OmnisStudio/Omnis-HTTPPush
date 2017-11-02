@@ -1,0 +1,2 @@
+Calculate lFlag as totc(iImageList,iImageChecked)
+Do $cinst.$objs.GetSelected.$enabled.$assign(lFlag)

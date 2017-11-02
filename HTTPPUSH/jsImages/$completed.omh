@@ -1,0 +1,30 @@
+Calculate lResponseDetails as pResponse
+Do lResponseDetails.$cols.$remove(lResponseDetails.$cols.responseContent)
+Do lResponseDetails.$cols.$remove(lResponseDetails.$cols.responseHeaders)
+Calculate lResponseHeaders as pResponse.responseHeaders
+
+If lResponseHeaders.omnismsg='imagedata'
+	Calculate lImageBinary as pResponse.responseContent
+	Do $cinst.$pushdata(row(2,lImageBinary,lResponseHeaders,lResponseDetails),lError) Returns #F
+Else If lResponseHeaders.omnismsg='multiple'
+	;  build lImagelist from json array and push to client
+	Calculate lRowFromJSON as OJSON.$jsontolistorrow(pResponse.responseContent)
+	Calculate lRowFromJSON as lRowFromJSON.Images
+	
+	Do lImageList.$define(lImageName,lImageBinary)
+	For lColCount from 1 to lRowFromJSON.$colcount step 1
+		Calculate lListFromJSON as lRowFromJSON.[lColCount]
+		Calculate lImageName as lListFromJSON.1.1
+		
+		Calculate lImageBinary as binfrombase64(lListFromJSON.2.1)
+		Calculate lImageBinary as binfrombase64(lImageBinary)
+		
+		Do lImageList.$add(lImageName,lImageBinary)
+	End For
+	
+	Do $cinst.$pushdata(row(3,lImageList,lResponseHeaders,lResponseDetails),lError) Returns #F
+Else     ;; imagelist
+	Calculate lRowFromJSON as OJSON.$jsontolistorrow(pResponse.responseContent)
+	Calculate lListFromJSON as lRowFromJSON.Image_Names
+	Do $cinst.$pushdata(row(1,lListFromJSON,lResponseHeaders,lResponseDetails),lError) Returns #F
+End If

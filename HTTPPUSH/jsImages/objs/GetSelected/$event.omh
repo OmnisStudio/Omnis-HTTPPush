@@ -1,0 +1,14 @@
+On evClick
+	Do iImageList.$search(iImageChecked=kTrue)
+	Do iImageList.$first(kTrue,kFalse) Returns lLineRef
+	Calculate lString as
+	While lLineRef
+		Do iImageList.$loadcols()
+		Calculate lString as con(lString,pick(len(lString)>0,'',':'),iImageName)
+		Do iImageList.$next(lLineRef,kTrue,kFalse) Returns lLineRef
+	End While
+	
+	If len(lString)
+		Calculate iURI as con(iBaseURI,'/imagedata_multiple?pImageNames=',lString)
+		Do method execute
+	End If
