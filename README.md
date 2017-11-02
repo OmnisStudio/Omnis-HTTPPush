@@ -1,5 +1,5 @@
 # Omnis-HTTPPush
-Library to show how you can use the HTTP Worker Object to push content to web clients.
+Library to show how you can push data returned from an Omnis RESTful Web Service to the JavaScript Client.
 For more info:
 http://www.omnis.net/technotes/tnws0005.jsp
 
