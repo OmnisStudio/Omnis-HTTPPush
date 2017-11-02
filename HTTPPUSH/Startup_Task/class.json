@@ -1,0 +1,62 @@
+{
+	"classtype": "kTask",
+	"internalversion": 3,
+	"tvardefs": [
+		{
+			"name": "tLogMessage",
+			"order": 3,
+			"type": "kCharacter",
+			"subtype": "kSimplechar",
+			"sublen": 100000000
+		},
+		{
+			"name": "tLogTime",
+			"order": 2,
+			"type": "kDate",
+			"subtype": "kDatetime",
+			"sublen": 7
+		},
+		{
+			"name": "tServerLog",
+			"order": 1,
+			"type": "kList",
+			"subtype": "",
+			"sublen": 0
+		}
+	],
+	"cvardefs": [
+		{
+			"name": "cHttp",
+			"order": 1,
+			"type": "kObjectref",
+			"subtype": "",
+			"sublen": 0,
+			"initval": "#NULL"
+		}
+	],
+	"ivardefs": [
+		{
+			"name": "iMaxLines",
+			"order": 1,
+			"type": "kInteger",
+			"subtype": "k32bitint",
+			"sublen": 0,
+			"initval": "1000"
+		}
+	],
+	"properties": {
+		"collectperformancedata": false,
+		"componenticon": 0,
+		"componenttype": "kCompStoreHidden",
+		"createdate": "2017-09-07 14:17:04",
+		"desc": "",
+		"editor": "",
+		"editordata": "",
+		"external": false,
+		"issupercomponent": false,
+		"moddate": "2016-09-27 14:54:58",
+		"showascheckedout": false,
+		"userinfo": "",
+		"version": "1"
+	}
+}

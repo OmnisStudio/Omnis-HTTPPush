@@ -1,0 +1,5 @@
+Do tServerLog.$define(tLogTime,tLogMessage)
+Do method $addServerLogLine ('Server Started')
+
+Do $clib.$remoteforms.jsServerLog.$open("*")
+Do $clib.$remoteforms.jsImages.$open("*")

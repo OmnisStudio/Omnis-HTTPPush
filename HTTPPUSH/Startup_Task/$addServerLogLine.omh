@@ -1,0 +1,4 @@
+Do tServerLog.$addbefore(1,#D,pMessage)
+If tServerLog.$linecount>iMaxLines
+	Do tServerLog.$linecount.$assign(iMaxLines)
+End If
