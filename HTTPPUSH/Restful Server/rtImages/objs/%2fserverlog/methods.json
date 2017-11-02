@@ -1,0 +1,35 @@
+[
+	{
+		"name": "$get",
+		"ident": 0,
+		"order": 1,
+		"operationid": "get1015",
+		"outputtype": "sServerLog",
+		"pvardefs": [
+			{
+				"name": "pHeaders",
+				"order": 1,
+				"type": "kFieldreference",
+				"subtype": 0,
+				"sublen": 0,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+			{
+				"name": "lServerLog",
+				"order": 2,
+				"type": "kRow",
+				"subtype": "sServerLog",
+				"sublen": 0
+			},
+			{
+				"name": "lServerLogLines",
+				"order": 3,
+				"type": "kList",
+				"subtype": "sServerLogLines",
+				"sublen": 0
+			}
+		]
+	}
+]

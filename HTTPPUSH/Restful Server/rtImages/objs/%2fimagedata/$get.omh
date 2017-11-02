@@ -1,0 +1,9 @@
+Do $itasks.HTTPPUSH.$addServerLogLine(con('Image  ',pImageName,' requested by ',$cinst.$clientaddress))
+
+Calculate lPath as con(sys(215),'iconsets',sys(9),'studio',sys(9),pImageName)
+ReadBinFile (lPath,lBinary)
+
+Do $cinst.$sethttpstatus(200)
+Do $cinst.$addhttpresponseheader('omnismsg','imagedata')
+
+Quit method lBinary

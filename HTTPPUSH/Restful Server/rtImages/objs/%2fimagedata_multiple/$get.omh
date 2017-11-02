@@ -1,0 +1,20 @@
+Calculate lImageCount as (len(pImageNames)-len(replaceall(pImageNames,':','')))+1
+Do $itasks.HTTPPUSH.$addServerLogLine(con('#',lImageCount,' images requested by ',$cinst.$clientaddress))
+
+While len(pImageNames)
+	Calculate lImageName as strtok('pImageNames',':')
+	
+	Calculate lPath as con(sys(215),'iconsets',sys(9),'studio',sys(9),lImageName)
+	ReadBinFile (lPath,lBinary)
+	
+	Calculate lBase64 as bintobase64(lBinary)
+	Calculate lBin as binfrombase64(lBase64)
+	Do lImages.$add(lImageName,lBase64)
+End While
+
+Do lReturnRow.$assigncols(lImages)
+
+Do $cinst.$sethttpstatus(200)
+Do $cinst.$addhttpresponseheader('omnismsg','multiple')
+
+Quit method OJSON.$listorrowtojson(lReturnRow)

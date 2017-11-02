@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Server_LogLines",
+		"ident": 32001,
+		"order": 1,
+		"type": "kList",
+		"subtype": "sServerLogLines",
+		"sublen": 0,
+		"properties": {
+			"desc": "",
+			"nonull": false,
+			"primarykey": false,
+			"userinfo": ""
+		}
+	}
+]

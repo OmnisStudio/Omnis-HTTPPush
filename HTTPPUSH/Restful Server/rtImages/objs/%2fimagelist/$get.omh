@@ -1,0 +1,11 @@
+Do $itasks.HTTPPUSH.$addServerLogLine(con('Image names requested by ',$cinst.$clientaddress))
+
+Calculate lPath as con(sys(215),'iconsets',sys(9),'studio')
+Do lImages.$define(lImageName)
+Do lImages.$merge(FileOps.$filelist(kFileOpsIncludeFiles,lPath))
+
+Do $cinst.$sethttpstatus(200)
+Do $cinst.$addhttpresponseheader('omnismsg','imagelist')
+
+Do lReturnRow.$assigncols(lImages)
+Quit method lReturnRow

@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Image_Names",
+		"ident": 32001,
+		"order": 1,
+		"type": "kList",
+		"subtype": "<character>",
+		"sublen": 0,
+		"properties": {
+			"desc": "",
+			"nonull": false,
+			"primarykey": false,
+			"userinfo": ""
+		}
+	}
+]

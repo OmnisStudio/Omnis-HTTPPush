@@ -1,0 +1,6 @@
+Do $itasks.HTTPPUSH.$addServerLogLine(con('Server log requested by ',$cinst.$clientaddress))
+
+Do $cinst.$sethttpstatus(200)
+Do lServerLogLines.$merge($itasks.HTTPPUSH.$getServerLog())
+Calculate lServerLog.Server_LogLines as lServerLogLines
+Quit method lServerLog

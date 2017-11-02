@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Images",
+		"ident": 32003,
+		"order": 1,
+		"type": "kList",
+		"subtype": "sMultipleImage",
+		"sublen": 0,
+		"properties": {
+			"desc": "",
+			"nonull": false,
+			"primarykey": false,
+			"userinfo": ""
+		}
+	}
+]

@@ -1,0 +1,49 @@
+[
+	{
+		"name": "$get",
+		"ident": 1,
+		"order": 2,
+		"operationid": "get1007",
+		"outputtype": "sImageNames",
+		"pvardefs": [
+			{
+				"name": "pHeaders",
+				"order": 1,
+				"type": "kFieldreference",
+				"subtype": 0,
+				"sublen": 0,
+				"param": 1
+			}
+		],
+		"lvardefs": [
+			{
+				"name": "lImageName",
+				"order": 5,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			},
+			{
+				"name": "lImages",
+				"order": 3,
+				"type": "kList",
+				"subtype": "",
+				"sublen": 0
+			},
+			{
+				"name": "lPath",
+				"order": 2,
+				"type": "kCharacter",
+				"subtype": "kSimplechar",
+				"sublen": 100000000
+			},
+			{
+				"name": "lReturnRow",
+				"order": 4,
+				"type": "kRow",
+				"subtype": "sImageNames",
+				"sublen": 0
+			}
+		]
+	}
+]
