@@ -1,0 +1,32 @@
+;  Enter your initialization code here
+
+;  TCPGetMyAddr  Returns lMyIPAddress
+Calculate lMyIPAddress as '127.0.0.1'
+
+Calculate lMyServerPort as $prefs.$serverport
+If lMyServerPort=0
+	Do $ctask.$showmessage('Please set serverport and restart Omnis prior to using this form.','Serverport unset')
+End If
+
+Do iURIDropList.$define(iBaseURI)
+Do iURIDropList.$add(con('http://',lMyIPAddress,':',lMyServerPort,'/api/HTTPPUSH/images'))     ;; direct connection
+Do iURIDropList.$add('http://99.99.99.99/cgi-bin/omnisrestisapi.dll/ws/1234/api/HTTPPUSH/images')     ;; iis
+Do iURIDropList.$add('http://99.99.99.99/cgi-bin/nph-omnisrestcgi.exe/ws/1234/api/HTTPPUSH/images')     ;; iis
+Do iURIDropList.$add('http://99.99.99.99:8080/omnisrestservlet/ws/1234/api/HTTPPUSH/images')     ;; tomcat
+Do iURIDropList.$line.$assign(1)
+Do iURIDropList.$loadcols()
+
+Do iHeaders.$define(iHeaderName,iHeaderValue)
+Do iHeaders.$add("content-type","application/json")
+
+Do $objects.oHTTPWorker.$newref() Returns iHttp     ;; OW3 Http Worker
+Do iHttp.$setCallingInst($cinst)
+
+Do $objects.oTimerWorker.$newref() Returns iTimer
+Do iTimer.$setCallingInst($cinst)
+
+Calculate iTimer.$useseconds as kTrue
+Calculate iTimer.$timervalue as iTimerValue
+Calculate iTimer.$repeat as kTrue
+
+Do $cinst.$clientcommand("openpush",row())

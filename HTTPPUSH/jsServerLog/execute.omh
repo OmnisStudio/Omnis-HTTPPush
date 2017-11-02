@@ -1,0 +1,2 @@
+Do iHttp.$init(iURI,kOW3httpMethodGet,iHeaders,iContent,iAuthList.iAuthType,iUser,iPassword,iRealm) Returns lOk
+Do iHttp.$start() Returns lOk

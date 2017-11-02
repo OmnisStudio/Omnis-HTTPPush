@@ -1,0 +1,8 @@
+On evClick
+	If $cobj.$text='Start Timer'
+		Do method startTimer
+		Do $cobj.$text.$assign('Stop Timer')
+	Else
+		Do method stopTimer
+		Do $cobj.$text.$assign('Start Timer')
+	End If

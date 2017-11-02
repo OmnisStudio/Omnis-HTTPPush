@@ -1,0 +1,6 @@
+On evBefore
+	
+On evAfter
+	If iTimerValue<1
+		Calculate iTimerValue as 1
+	End If

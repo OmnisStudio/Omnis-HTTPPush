@@ -1,0 +1,2 @@
+Do iTimer.$timervalue.$assign(iTimerValue)
+Do iTimer.$starttimer()

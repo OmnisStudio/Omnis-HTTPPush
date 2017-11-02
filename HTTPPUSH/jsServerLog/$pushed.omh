@@ -1,0 +1,16 @@
+Do iServerLog.$define(iImageName,iImageBinary)
+Do iServerLog.$merge(pRow.C1)
+
+Calculate lHeaderRow as pRow.C2
+Do iResponseHeaders.$define(iResponseHeader,iResponseHeaderValue)
+For lCol from 1 to lHeaderRow.$colcount step 1
+	Do iResponseHeaders.$add(lHeaderRow.$cols.[lCol].$name,lHeaderRow.[lCol])
+End If
+
+Calculate lDetailsRow as pRow.C3
+Do iRepsonseDetails.$define(iResponseDetail,iResponseDetailValue)
+For lCol from 1 to lDetailsRow.$colcount step 1
+	Do iRepsonseDetails.$add(lDetailsRow.$cols.[lCol].$name,lDetailsRow.[lCol])
+End If
+
+Calculate iURI as pRow.C4

@@ -1,0 +1,24 @@
+If pResponse.$colcount=0     ;; called by timer (pResponse empty)
+	Calculate iURI as con(iBaseURI,'/serverlog')
+	Do method execute
+	Do method stopTimer     ;; debug
+Else     ;; called by HTTPWorker,  build lServerLog from json array and push to client
+	Calculate lResponseDetails as pResponse
+	Do lResponseDetails.$cols.$remove(lResponseDetails.$cols.responseContent)
+	Do lResponseDetails.$cols.$remove(lResponseDetails.$cols.responseHeaders)
+	Calculate lResponseHeaders as pResponse.responseHeaders
+	
+	Calculate lRowFromJSON as OJSON.$jsontolistorrow(pResponse.responseContent)
+	Calculate lRowFromJSON as lRowFromJSON.Server_LogLines
+	
+	Do lServerLog.$define(lServerTime,lServerMessage)
+	For lColCount from 1 to lRowFromJSON.$colcount step 1
+		Calculate lListFromJSON as lRowFromJSON.[lColCount]
+		Calculate lServerTime as lListFromJSON.1.1
+		Calculate lServerMessage as lListFromJSON.2.1
+		Do lServerLog.$add(lServerTime,lServerMessage)
+	End For
+	
+	Do $cinst.$pushdata(row(lServerLog,lResponseHeaders,lResponseDetails,iURI),lError) Returns #F
+	Do method starttimer     ;; debug
+End If
